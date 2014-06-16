@@ -1,0 +1,54 @@
+@charset "utf-8";
+// ===================================================================
+// 設定
+// ===================================================================
+
+
+// HTML5の場合は値を「false」から「true」にする
+$use_html5: true;
+
+// 汎用クラスを使用するか
+$use_extend_object: true;
+
+// 簡易ロールオーバーの値
+$opacity_value: .55;
+
+// 余白調整用のクラスを使用するか
+$use_spacing_classes: false;
+
+// 画像のパス
+$img_path: "../img/";
+
+// ベースフォント
+$base_font: "メイリオ", "Meiryo", verdana, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
+$base_font_ie: "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
+
+// ページ全体の横幅
+$base_width: 1280px;
+
+// 要素の基本下マージン
+$base_margin_bottom: 16px;
+
+// メインカラー（ベースカラー）
+$main_color: #cc9999;
+
+// サブカラー
+$sub_color: #ddd;
+
+// アクセントカラー
+$accent_color: #4a98b0;
+
+// ベーステキストカラー
+$font_color: #666;
+
+// ベースリンクカラー
+$link_color: #4a98b0;
+$link_color_visited: #4a98b0;
+$link_color_hover: #A4D4E3;
+$link_color_active: #205464;
+
+// 付与するベンダープレフィックス
+$set_prefix: -webkit-, -moz-, -ms-, -o-, '';
+
+// 角丸の初期値
+$br_value: 3px;

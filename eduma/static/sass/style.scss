@@ -1,0 +1,481 @@
+@charset "utf-8";
+// ===================================================================
+// 各SCSSファイルのインポート
+// ===================================================================
+
+//設定用
+@import "setting";
+
+//リセットCSS、フォントサイズ
+@import "reset";
+
+//ミックスイン、@extend、CSS3など
+@import "mixin";
+@import "compass/css3";
+
+//Font Awesome
+@import "font-awesome/variables";
+@import "font-awesome/mixins";
+@import "font-awesome/path";
+@import "font-awesome/core";
+@import "font-awesome/larger";
+@import "font-awesome/fixed-width";
+@import "font-awesome/list";
+@import "font-awesome/bordered-pulled";
+@import "font-awesome/spinning";
+@import "font-awesome/rotated-flipped";
+@import "font-awesome/stacked";
+@import "font-awesome/icons";
+
+//印刷用スタイル
+@import "print";
+
+
+// ===================================================================
+// element style
+// ===================================================================
+
+body {
+  padding-top: 16px;
+  margin: 0 20px;
+  border-left: 1px solid $sub_color;
+  border-right: 1px solid $sub_color;
+  background: image-url("common/bg_01.png");
+  color: $font_color;
+  font-family: $base_font;
+}
+
+input, textarea {
+  font-family: $base_font;
+}
+
+//for IE6
+* html {
+  body, input, textarea {
+    font-family: $base_font_ie;
+  }
+}
+
+//リンク
+a {
+    text-decoration: none;
+  &:link {
+    color: $link_color;
+  }
+  &:visited {
+    color: $link_color_visited;
+  }
+  &:hover {
+    color: $link_color_hover;
+  }
+  &:active {
+    color: $link_color_active;
+  }
+}
+
+// ===================================================================
+// 共通レイアウト
+// ===================================================================
+header {
+  position: relative;
+  margin: 0 auto;
+  width: $base_width;
+  height: 48px;
+  border-bottom: 1px solid $sub_color;
+  //ロゴ
+  > h1 {
+    position: relative;
+    a {
+      display: inline-block;
+    }
+    //吹き出し
+    .baloon {
+      display: inline-block;
+      position: relative;
+      top: -7px;
+      padding: 0 8px;
+      margin-left: 12px;
+      height: 25px;
+      background: $main_color;
+      @include border-radius(2px);
+      line-height: 26px;
+      color: #fff;
+      font-weight: normal;
+      //吹き出しの矢印
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 6px;
+        left: -8px;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-right: 10px solid $main_color;
+        border-bottom: 5px solid transparent;
+      }
+    }
+  }
+  //グローバルメニュー
+  > nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    //メインメニュー
+    > ul {
+      display: inline-block;
+      position: relative;
+      top: -10px;
+      font-size: 16px;
+      li {
+        display: inline-block;
+        margin-right: 19px;
+        color: $main_color;
+      }
+    }
+    //アカウントメニュー
+    .account_menu {
+      display: inline-block;
+      padding: 8px 16px;
+      min-width: 100px;
+      height: 48px;
+      @include box-sizing(border-box);
+      border-top: 1px solid $sub_color;
+      border-left: 1px solid $sub_color;
+      border-right: 1px solid $sub_color;
+      //サムネイル画像
+      img {
+        display: inline-block;
+        margin-right: 9px;
+      }
+      //ユーザー名
+      p {
+        display: inline-block;
+        position: relative;
+        bottom: 10px;
+        font-size: 16px;
+      }
+      //プルダウンメニュー
+      .pull_down_menu {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        top: 48px;
+        right: 0;
+        background: #f8f8f8;
+        @include box-sizing(border-box);
+        border: 1px solid $sub_color;
+        li {
+          padding: 16px 32px;
+          border-bottom: 1px solid $sub_color;
+          font-size: 16px;
+        }
+      }
+      //hover時にプルダウンメニューを表示
+      &:hover {
+        .pull_down_menu {display: block;}
+      }
+    }
+  }
+}
+
+//メインエリア
+#main {
+  margin: 0 auto;
+  width: $base_width;
+}
+
+//フッターリンク
+#footer_link {
+  padding: 32px 0;
+  width: 100%;
+  border-top: 1px solid #ddd;
+  margin: 0 auto;
+  text-align: center;
+  div {
+    display: inline-block;
+    padding-right: 40px;
+    margin-right: 40px;
+    border-right: 1px solid $sub_color;
+    text-align: left;
+    &:last-child {
+      padding-right: 0;
+      margin-right: 0;
+      border-right: none;
+    }
+    h1 {
+      margin-bottom: 16px;
+      font-size: 16px;
+      font-weight: normal;
+    }
+    ul {
+      float: left;
+      margin-right: 40px;
+      li {
+        position: relative;
+        margin-bottom: 16px;
+        &:before {
+          position: relative;
+          content: "\f101";
+          font-family: "FontAwesome";
+          margin-right: 8px;
+          color: $accent_color;
+        }
+      }
+    }
+  }
+}
+
+//フッター
+footer {
+  position: absolute;
+  padding-top: 14px;
+  margin-left: -21px;
+  width: 100%;
+  height: 80px;
+  background: rgba(148, 27, 27, 0.4);
+  @include box-sizing(border-box);
+  text-align: center;
+  img {
+  }
+}
+
+// ===================================================================
+// ナレッジマップ
+// ===================================================================
+#knowledge_map {
+
+  #main {
+    overflow: hidden;
+    //サイドバー
+    #side_bar {
+      float: left;
+      width: 375px;
+      @include box-sizing(border-box);
+      border-right: 1px solid $sub_color;
+
+      //タブエリア
+      nav {
+        position: relative;
+        @include display-box();
+        ul {
+          li {
+            padding: 8px 16px;
+            display: inline-block;
+            height: 23px;
+            border-right: 1px solid $sub_color;
+            border-bottom: 1px solid $sub_color;
+            border-left: 1px solid $sub_color;
+            line-height: 23px;
+            font-size: 14px;
+
+            &:first-child {border-right: none;}
+            &.actv {
+              border-bottom: none;
+              color: $main_color;
+            }
+          }
+        }
+        //閉じるボタン
+        .btn_close_side_bar {
+          display: block;
+          @include box-flex(1);
+          height: 39px;
+          border-bottom: 1px solid #ddd;
+          text-align: right;
+          line-height: 36px;
+          font-size: 30px;
+          &:before {
+            margin-right: 16px;
+          }
+        }
+      }
+      //授業リスト
+      #class_list {
+        @include box-sizing(border-box);
+        padding-top: 16px;
+        //検索フォーム
+        #search_class_form {
+          position: relative;
+          //虫めがねアイコン
+          &:after {
+            content: "\f002";
+            font-family: FontAwesome;
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            color: #ccc;
+          }
+          //テキストボックス
+          input {
+            padding: 8px 8px 8px 28px;
+            width: 358px;
+            height: 32px;
+            border: 1px solid $sub_color;
+            @include box-sizing(border-box);
+          }
+        }
+        //リスト
+        ul {
+          overflow: auto;
+          height: 793px;
+          li {
+            position: relative;
+            height: 56px;
+            @include box-sizing(border-box);
+            line-height: 56px;
+            border-bottom: 1px solid $sub_color;
+            font-size: 14px;
+            //履修済みの項目（王冠アイコン）
+            &.done:after {
+              content: "";
+              position: absolute;
+              right: 0;
+              bottom: 22px;
+              margin-right: 16px;
+              $image: "map/icon_crown.png";
+              width: image-width($image);
+              height: image-height($image);
+              background: image-url($image) right no-repeat;
+            }
+            &.private {
+              i.fa {color: #e3a9a4;}
+            }
+            //ピンアイコン
+            > i.fa {
+              position: relative;
+              top: 5px;
+              margin-right: 16px;
+              color: #ffcc99;
+              font-size: 30px;
+            }
+          }
+        }
+      }
+      //表示設定
+      #view_setting {
+        div {
+          margin-bottom: 48px;
+          h1 {
+            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: normal;
+          }
+          ul {
+            li {
+              position: relative;
+              height: 56px;
+              @include box-sizing(border-box);
+              line-height: 56px;
+              border-bottom: 1px solid $sub_color;
+              font-size: 14px;
+              //チェックボックス
+              > i {
+                overflow: hidden;
+                display: inline-block;
+                margin: 0 8px -5px 0;
+                width: 24px;
+                height: 24px;
+                background: $sub_color;
+                text-align: center;
+                line-height: 24px;
+                //チェック時
+                &.check {
+                  background: $main_color;
+                  //アイコン
+                  &:after {
+                    font-family: FontAwesome;
+                    content: "\f00c";
+                    color: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    //ナレッジマップ
+    #map {
+      float: left;
+      position: relative;
+      padding-top: 40px;
+      width: 905px;
+      height: 881px;
+      @include box-sizing(border-box);
+      border-right: 1px solid $sub_color;
+      //タブメニュー
+      #tab_menu {
+        ul {
+          position:absolute;
+          z-index:10;
+          li {
+            float: left;
+            position: relative;
+            top: -8px;
+            margin-right: -4px;
+            $image: "map/tab_ribbon.png";
+            width: image-width($image);
+            height: image-height($image);
+            background: image-url($image);
+            text-align: center;
+            //アクティブ時
+            &.actv {
+              $image: "map/tab_ribbon_actv.png";
+              background: image-url($image);
+            }
+            //マップ新規作成ボタン
+            &.add_map:after {
+              content: "+";
+              position: absolute;
+              top: 0;
+              left: 0;
+              $image: "map/tab_ribbon.png";
+              width: image-width($image);
+              color: $main_color;
+              font-size: 30px;
+            }
+            //hover時のツールチップ（吹き出し）
+            .tool_tip {
+              display: block;
+              position: absolute;
+              top: -34px;
+              left: 50%;
+              width: 100%;
+              height: 24px;
+              background: $accent_color;
+              @include border-radius(2px);
+              line-height: 26px;
+              color: #fff;
+              font-size: 12px;
+              //吹き出しの矢印
+              &:after {
+                content: "";
+                position: absolute;
+                bottom: -8px;
+                left: 50%;
+                margin-left: -7px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 10px solid $accent_color;
+              }
+            }
+          }
+        }
+      }
+      //マップ
+      #map_canvas_wrapper {
+        width: 905px;
+        height: 100%;
+        background: $accent_color;
+        #map_canvas {
+          height: 100%
+        }
+      }
+    }
+
+  }
+
+}
+

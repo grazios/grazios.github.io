@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>タイトル</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<link rel="stylesheet" href="static/css/style.css" media="all">
+	</head>
+	<body id="knowledge_map" onload="initialize()">
+
+		<header>
+			<h1>
+				<a href="index.html"><img src="static/img/common/header_logo.png" height="31" width="113" alt="EduMa!"></a>
+				<div class="baloon map">Knowledge Map</div>
+			</h1>
+			<nav>
+				<ul>
+					<li><i class="fa fa-map-marker"></i> ナレッジマップ</li>
+					<li><a href="#"><i class="fa fa-book"></i> タスクボード</a></li>
+					<li><a href="#"><i class="fa fa-file-text-o"></i> ポートフォリオ</a></li>
+				</ul>
+				<div class="account_menu">
+					<img src="static/img/common/dumyy_thumbnail.png" height="31" width="33" alt="">
+					<p>商大花子　<i class="fa fa-angle-down"></i></p>
+					<ul class="pull_down_menu">
+						<li><a href="#">プロフィール編集</a></li>
+						<li><a href="#">各種設定</a></li>
+						<li><a href="#">ヘルプ</a></li>
+						<li><a href="#">ログアウト</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<!-- /header -->
+
+		<section id="main" ng-app ng-controller="KnowledgeMapController">
+
+			<section id="side_bar">
+				<nav>
+					<ul>
+						<li class="actv"><i class="fa fa-search"></i> 科目をさがす</li>
+						<li><i class="fa fa-map-marker"></i> 表示設定</li>
+					</ul>
+					<div class="btn_close_side_bar fa fa-angle-double-left"></div>
+				</nav>
+
+				<section id="class_list">
+					<div id="search_class_form">
+						<input type="text" placeholder="キーワードで科目を検索できます">
+					</div>
+					<ul>
+						<li ng-repeat='clazz in classList' data-lat='{{clazz.lat}}' data-lng='{{clazz.lng}}'  ng-click='moveMapPoint($event)' ng-class="{ done: clazz.isDone }" >
+							<i class="fa fa-map-marker"></i><span>{{ clazz.className }}</span>
+						</li>
+					</ul>
+				</section>
+				<!-- /#class_list -->
+
+				<section id="view_setting" style="display:none;">
+					<div>
+						<ul>
+							<li><i class="check"></i>履修済みの授業</li>
+							<li><i class="check"></i>未履修の授業</li>
+							<li><i class="check"></i>自分で作成した項目</li>
+							<li><i></i>開口してない授業</li>
+						</ul>
+					</div>
+					<div>
+						<h1>特定の分野のみ表示</h1>
+						<ul>
+							<li><i></i>履修済みの授業</li>
+							<li><i></i>未履修の授業</li>
+							<li><i></i>自分で作成した項目</li>
+							<li><i></i>開口してない授業</li>
+						</ul>
+					</div>
+				</section>
+				<!-- /#view_setting -->
+
+			</section>
+			<!-- /#side_bar -->
+
+			<section id="map">
+				<nav id="tab_menu">
+					<dl>
+						<dt class="actv"><span>eduma_original</span></dt>
+						<dd><span>公式マップ</span></dd>
+						<dt><span>eduma_private</span></dt>
+						<dd><span>個人用マップ</span></dd>
+					</dl>
+				</nav>
+				<div id="map_canvas_wrapper">
+					<div id="map_canvas">
+					</div>
+				</div>
+			</section>
+			<!-- /#map -->
+
+		</section>
+		<!-- /#main -->
+
+		<nav id="footer_link">
+			<div>
+				<h1>ダミーテキスト</h1>
+				<ul>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+				</ul>
+			</div>
+			<div>
+				<h1>ダミーテキスト</h1>
+				<ul>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+				</ul>
+			</div>
+			<div>
+				<h1>ダミーテキスト</h1>
+				<ul>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+					<li><a href="#">ダミーリンク</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<footer>
+			<img src="static/img/common/footer_logo_cuc.png" height="40" width="103" alt="CUC">
+		</footer>
+		<!-- /footer -->
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="static/js/home.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+		<script src="//maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="//takeshun.net/store/kml/js/eduma-util.js"></script>
+		<script src="//takeshun.net/store/kml/js/eduma-main.js"></script>
+		<script src="//takeshun.net/store/kml/js/KnowledgeMapController.js"></script>
+	</body>
+</html>
